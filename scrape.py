@@ -87,7 +87,7 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
                 logging.info(f"No more tweets found for query: {query}")
                 break
 
-            ffor tweet in tweets:
+            for tweet in tweets:
     tweet_text = tweet.text.lower()  # Convert to lowercase for easier comparison
     
     # Define words to exclude tweets related to fruit, juice, etc.
