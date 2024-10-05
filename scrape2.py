@@ -25,12 +25,12 @@ TWEETS_PER_DAY = 400
 # List of dates with 7-day range before and after
 # List of dates with 7-day range before and after, and the corresponding queries
 DATES = [
-    ("2011-08-17", "2011-08-31", "aug_24_2011.csv", ["Apple", "Apple CEO"]),
+    ("2011-08-17", "2011-08-31", "aug_24_2011.csv", ["@Apple", "Apple CEO"]),
     ("2010-01-20", "2010-02-03", "jan_27_2010.csv", ["iPad"]),
-    ("2014-08-24", "2014-09-07", "aug_31_2014.csv", ["iCloud", "Apple"]),
-    ("2010-02-26", "2010-03-12", "mar_5_2010.csv", ["Apple","iPhone"]),
-    ("2011-07-27", "2011-08-10", "aug_3_2011.csv", ["Apple", "iPhone"]),
-    ("2014-05-05", "2014-05-19", "may_12_2014.csv", ["Apple", "iPhone"]),
+    ("2014-08-24", "2014-09-07", "aug_31_2014.csv", ["iCloud", "@Apple"]),
+    ("2010-02-26", "2010-03-12", "mar_5_2010.csv", ["@Apple","iPhone"]),
+    ("2011-07-27", "2011-08-10", "aug_3_2011.csv", ["@Apple", "iPhone"]),
+    ("2014-05-05", "2014-05-19", "may_12_2014.csv", ["@Apple", "iPhone"]),
 ]
 async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
     if tweets is None:
