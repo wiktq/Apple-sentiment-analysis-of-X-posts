@@ -24,7 +24,7 @@ MINIMUM_TWEETS = 400  # Adjust based on your goal of 20k-30k total tweets
 
 # List of dates with 7-day range before and after
 DATES = [
-    ("2011-08-17","aug_24_2011.csv")]
+    ("2011-08-17","2011-08-17","aug_24_2011.csv")]
    
 
 # Queries to search for in each date range
