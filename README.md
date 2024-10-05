@@ -24,6 +24,7 @@ pip install -r requirements.txt
 ```bash
 python scrape.py
 ```
-5. Changing the Twitter credentials in credentials.py after block
+5. Blocking
+I would suggest to lower the data volumes in the code to lower the probability of twitter's ban. If decreasing the volume not possible, add a new twitter account data to the "credentials.py" after every block.
 
 
