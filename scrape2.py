@@ -23,18 +23,15 @@ logging.basicConfig(
 TWEETS_PER_DAY = 400
 
 # List of dates with 7-day range before and after
+# List of dates with 7-day range before and after, and the corresponding queries
 DATES = [
-    ("2011-08-17", "2011-08-31", "aug_24_2011.csv"),
-    ("2010-01-20", "2010-02-03", "jan_27_2010.csv"),
-    ("2014-08-24", "2014-09-07", "aug_31_2014.csv"),
-    ("2010-02-26", "2010-03-12", "mar_5_2010.csv"),
-    ("2011-07-27", "2011-08-10", "aug_3_2011.csv"),
-    ("2014-05-05", "2014-05-19", "may_12_2014.csv"),
+    ("2011-08-17", "2011-08-31", "aug_24_2011.csv", ["Apple", "Apple CEO"]),
+    ("2010-01-20", "2010-02-03", "jan_27_2010.csv", ["iPad"]),
+    ("2014-08-24", "2014-09-07", "aug_31_2014.csv", ["iCloud", "Apple"]),
+    ("2010-02-26", "2010-03-12", "mar_5_2010.csv", ["Apple","iPhone"]),
+    ("2011-07-27", "2011-08-10", "aug_3_2011.csv", ["Apple", "iPhone"]),
+    ("2014-05-05", "2014-05-19", "may_12_2014.csv", ["Apple", "iPhone"]),
 ]
-
-# Queries to search for in each date range
-QUERIES = ["Apple", "iPhone", "iPad", "iCloud"]
-
 async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
     if tweets is None:
         logging.info(f"Getting tweets for query: {query}")
@@ -119,8 +116,8 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
     await asyncio.sleep(15)
 
 async def main():
-    for start_date, end_date, filename in DATES:
-        for query in QUERIES:
+    for start_date, end_date, filename, queries in DATES:
+        for query in queries:
             await scrape_tweets(query, filename, start_date, end_date)
 
 if __name__ == "__main__":
