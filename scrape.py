@@ -24,9 +24,13 @@ MINIMUM_TWEETS = 400  # Adjust based on your goal of 20k-30k total tweets
 
 # List of dates with 7-day range before and after
 DATES = [
-    ("2011-08-17","aug_24_2011.csv")]
-# Queries to search for in each date range
-QUERIES = ["@Apple", "Apple"]
+    ("2011-08-24", "2011-08-31", "aug_24_2011.csv", ["Apple",]),
+    ("2010-01-20", "2010-02-03", "jan_27_2010.csv", ["iPad"]),
+    ("2014-08-24", "2014-09-07", "aug_31_2014.csv", ["iCloud", "Apple"]),
+    ("2010-02-26", "2010-03-12", "mar_5_2010.csv", ["Apple", "iPhone"]),
+    ("2011-07-27", "2011-08-10", "aug_3_2011.csv", ["Apple", "iPhone"]),
+    ("2014-05-05", "2014-05-19", "may_12_2014.csv", ["Apple", "iPhone"]),
+]
 
 async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
     if tweets is None:
@@ -87,7 +91,7 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
                 logging.info(f"No more tweets found for query: {query}")
                 break
 
-             for tweet in tweets:
+            for tweet in tweets:
                 tweet_text = tweet.text.lower()  # Convert to lowercase for easier comparison
 
                 # Define words to exclude tweets related to fruit, juice, etc.
@@ -116,8 +120,8 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
 
 
 async def main():
-    for start_date, end_date, filename in DATES:
-        for query in QUERIES:
+    for start_date, end_date, filename, queries in DATES:
+        for query in queries:
             await scrape_tweets(query, filename, start_date, end_date)
 
 
