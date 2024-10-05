@@ -94,15 +94,22 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
                 logging.info(f"No more tweets found for query: {query}")
                 break
 
-            for tweet in tweets:
-                tweet_count += 1
-                tweet_data = [
-                    tweet_count,
-                    query,  # Save the query for tracking
-                    tweet.text,
-                    tweet.created_at,
-                ]
-                writer.writerow(tweet_data)
+            ffor tweet in tweets:
+    tweet_text = tweet.text.lower()  # Convert to lowercase for easier comparison
+    
+    # Define words to exclude tweets related to fruit, juice, etc.
+    exclude_words = ["fruit", "juice", "tree", "pie", "cider", "orchard"]
+
+    # Only save tweets about the company, excluding tweets about fruit
+    if "apple" in tweet_text and not any(exclude in tweet_text for exclude in exclude_words):
+        tweet_count += 1
+        tweet_data = [
+            tweet_count,
+            query,
+            tweet.text,
+            tweet.created_at,
+        ]
+        writer.writerow(tweet_data)
 
             logging.info(f"Got {tweet_count} tweets for query: {query}")
 
