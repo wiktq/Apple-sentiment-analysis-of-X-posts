@@ -28,7 +28,7 @@ DATES = [
    
 
 # Queries to search for in each date range
-QUERIES = ["@Apple"]
+QUERIES = ["Apple","iPhone","iPad"]
 
 async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
     if tweets is None:
