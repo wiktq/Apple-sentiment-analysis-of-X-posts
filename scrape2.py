@@ -5,7 +5,6 @@ import logging
 import random
 import json
 from twikit import Client, TooManyRequests
-from datetime import datetime
 from typing import List, Tuple, Optional
 from credentials import (
     RAW_DIR,
@@ -19,11 +18,12 @@ from credentials import (
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
-# Set minimum value of tweets per day
+
+# Set the number of tweets to get per day
 TWEETS_PER_DAY = 400
 
-# List of key dates with their ranges (7 days before and after)
-DATE_RANGES = [
+# List of dates with 7-day range before and after
+DATES = [
     ("2011-08-17", "2011-08-31", "aug_24_2011.csv"),
     ("2010-01-20", "2010-02-03", "jan_27_2010.csv"),
     ("2014-08-24", "2014-09-07", "aug_31_2014.csv"),
@@ -32,8 +32,21 @@ DATE_RANGES = [
     ("2014-05-05", "2014-05-19", "may_12_2014.csv"),
 ]
 
-# Queries to search for
+# Queries to search for in each date range
 QUERIES = ["Apple", "iPhone", "iPad", "iCloud"]
+
+async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
+    if tweets is None:
+        logging.info(f"Getting tweets for query: {query}")
+        tweets = await client.search_tweet(query, product="Latest")
+    else:
+        wait_time = random.randint(5, 25)
+        logging.info(
+            f"Getting next tweets for query: {query} after {wait_time} seconds"
+        )
+        await asyncio.sleep(wait_time)
+        tweets = await tweets.next()
+    return tweets
 
 async def scrape_tweets(query: str, filename: str, start_date: str, end_date: str) -> None:
     client = Client(language="en-US")
@@ -44,7 +57,7 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
     )
     client.save_cookies(str(COOKIES_FILE))
 
-    # Convert dates to datetime objects
+    # Convert the start and end date strings to datetime objects
     current_date = datetime.strptime(start_date, '%Y-%m-%d')
     end_date_dt = datetime.strptime(end_date, '%Y-%m-%d')
 
@@ -54,6 +67,7 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
         writer = csv.writer(file)
         writer.writerow(["Tweet_Count", "Query", "Text", "Created_At"])
 
+        # Loop over each day in the date range
         while current_date <= end_date_dt:
             daily_tweet_count = 0
             daily_start = current_date.strftime('%Y-%m-%d')
@@ -104,12 +118,10 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
 
     await asyncio.sleep(15)
 
-
 async def main():
-    for start_date, end_date, filename in DATE_RANGES:
+    for start_date, end_date, filename in DATES:
         for query in QUERIES:
             await scrape_tweets(query, filename, start_date, end_date)
-
 
 if __name__ == "__main__":
     asyncio.run(main())
