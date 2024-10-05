@@ -38,9 +38,7 @@ async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> ob
         tweets = await client.search_tweet(query, product="Latest")
     else:
         wait_time = random.randint(5, 25)
-        logging.info(
-            f"Getting next tweets for query: {query} after {wait_time} seconds"
-        )
+        logging.info(f"Getting next tweets for query: {query} after {wait_time} seconds")
         await asyncio.sleep(wait_time)
         tweets = await tweets.next()
     return tweets
