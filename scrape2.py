@@ -1,5 +1,24 @@
 from datetime import timedelta, datetime
+import asyncio
+import csv
+import logging
+import random
+import json
+from twikit import Client, TooManyRequests
+from datetime import datetime
+from typing import List, Tuple, Optional
+from credentials import (
+    RAW_DIR,
+    COOKIES_FILE,
+    RESUME_FILE,
+    TWITTER_USERNAME,
+    TWITTER_EMAIL,
+    TWITTER_PASSWORD,
+)
 
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 # Set minimum value of tweets per day
 TWEETS_PER_DAY = 400
 
