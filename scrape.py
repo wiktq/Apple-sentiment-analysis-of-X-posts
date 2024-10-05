@@ -24,12 +24,12 @@ MINIMUM_TWEETS = 500  # Adjust based on your goal of 20k-30k total tweets
 
 # List of dates with 7-day range before and after
 DATES = [
-    ("2011-08-24", "2011-08-26", "aug_24_2011.csv", ["Apple"]),
-    ("2010-01-20", "2010-01-22", "jan_27_2010.csv", ["iPad"]),
-    ("2014-08-24", "2014-08-26", "aug_31_2014.csv", ["iCloud"]),
-    ("2010-02-26", "2010-02-28", "mar_5_2010.csv", ["Apple"]),
-    ("2011-07-27", "2011-07-29", "aug_3_2011.csv", ["Apple"]),
-    ("2014-05-05", "2014-05-07", "may_12_2014.csv", ["Apple"]),
+    ("2011-08-16", "2011-08-18", "aug_24_2011.csv", ["Apple"]),
+    ("2010-01-19", "2010-01-21", "jan_27_2010.csv", ["iPad"]),
+    ("2014-08-23", "2014-08-25", "aug_31_2014.csv", ["iCloud"]),
+    ("2010-02-27", "2010-03-01", "mar_5_2010.csv", ["Apple"]),
+    ("2011-07-28", "2011-07-30", "aug_3_2011.csv", ["Apple"]),
+    ("2014-05-04", "2014-05-06", "may_12_2014.csv", ["Apple"]),
 ]
 
 async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
