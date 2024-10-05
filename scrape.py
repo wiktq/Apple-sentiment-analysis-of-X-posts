@@ -20,20 +20,13 @@ logging.basicConfig(
 )
 
 # Set minimum value of tweets you want to get per query
-MINIMUM_TWEETS = 3300  # Adjust based on your goal of 20k-30k total tweets
+MINIMUM_TWEETS = 400  # Adjust based on your goal of 20k-30k total tweets
 
 # List of dates with 7-day range before and after
 DATES = [
-    ("2011-08-17", "2011-08-31", "aug_24_2011.csv"),
-    ("2010-01-20", "2010-02-03", "jan_27_2010.csv"),
-    ("2014-08-24", "2014-09-07", "aug_31_2014.csv"),
-    ("2010-02-26", "2010-03-12", "mar_5_2010.csv"),
-    ("2011-07-27", "2011-08-10", "aug_3_2011.csv"),
-    ("2014-05-05", "2014-05-19", "may_12_2014.csv"),
-]
-
+    ("2011-08-17","aug_24_2011.csv")]
 # Queries to search for in each date range
-QUERIES = ["Apple", "iPhone", "iPad", "iCloud"]
+QUERIES = ["@Apple", "Apple"]
 
 async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
     if tweets is None:
