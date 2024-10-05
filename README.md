@@ -18,7 +18,7 @@ python -m venv venv
 ```
 3. Installing packages
 ```bash
-pip install -r packages.txt
+pip install -r requirements.txt
 ```
 
 
