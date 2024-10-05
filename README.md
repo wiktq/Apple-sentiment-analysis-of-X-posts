@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ```
 4. Running the script on the terminal 
 ```bash
-python scrape2.py
+python scrape.py
 ```
 5. Changing the Twitter credentials in credentials.py after block
 
