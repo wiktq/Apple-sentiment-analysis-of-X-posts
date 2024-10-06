@@ -95,7 +95,7 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
                 tweet_text = tweet.text.lower()  # Convert to lowercase for easier comparison
 
                 # Define words to exclude tweets related to fruit, juice, etc.
-                exclude_words = ["fruit", "juice", "tree", "pie", "cider", "orchard", "win", "free", "cinnamon", "caramel", "eat", "eating", "meal", "recipe", "dessert", "picking", "giveaway", "jack", "taste", "wood", "shabby", "slice", "bees", "banana", "ate"]
+                exclude_words = ["fruit", "juice", "tree", "pie", "cider", "orchard", "win", "free", "cinnamon", "caramel", "eat", "eating", "meal", "recipe", "dessert", "picking", "giveaway", "jack", "taste", "wood", "shabby", "slice", "bees", "banana", "ate", "cake", "viral", "sour", "flavor"]
 
                 # Only save tweets about the company, excluding tweets about fruit
                 if "apple" in tweet_text and not any(exclude in tweet_text for exclude in exclude_words):
