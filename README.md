@@ -30,6 +30,11 @@ I would suggest to lower the data volumes in the code to minimize the probabilit
 6. Deleting the repository from Mac, if needed
 ```bash
 rm -rf Apple-sentiment-analysis
+```
+7. Fetching the latest changes from GitHub
+```bash
+git pull origin main
+
 
 
 
