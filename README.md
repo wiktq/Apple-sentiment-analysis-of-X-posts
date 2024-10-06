@@ -34,7 +34,3 @@ rm -rf Apple-sentiment-analysis
 7. Fetching the latest changes from GitHub
 ```bash
 git pull origin main
-
-
-
-
