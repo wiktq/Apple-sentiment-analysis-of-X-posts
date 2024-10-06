@@ -11,5 +11,5 @@ RAW_DIR.mkdir(exist_ok=True)
 
 # Twitter credentials
 TWITTER_USERNAME = "Karolina164346"
-TWITTER_EMAIL = "karolinakuczynska1@op.pl "
+TWITTER_EMAIL = "karolinakuczynska1@op.pl"
 TWITTER_PASSWORD = "haslonatwitter2"
