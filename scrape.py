@@ -20,16 +20,16 @@ logging.basicConfig(
 )
 
 # Set minimum value of tweets you want to get per query
-MINIMUM_TWEETS = 500  # Adjust based on your goal of 20k-30k total tweets
+MINIMUM_TWEETS = 500  
 
 # List of dates with 7-day range before and after
 DATES = [
-    ("2014-09-06", "2014-09-08", "aug_24_2011.csv", ["Apple"]),
-    ("2010-01-19", "2010-01-21", "jan_27_2010.csv", ["Apple"]),
-    ("2014-08-23", "2014-08-25", "aug_31_2014.csv", ["Apple"]),
-    ("2010-02-25", "2010-02-27", "mar_5_2010.csv", ["Apple"]),
-    ("2011-07-27", "2011-07-29", "aug_3_2011.csv", ["Apple"]),
-    ("2014-05-18", "2014-05-20", "may_12_2014.csv", ["Apple"]),
+    ("2011-08-17", "2011-08-31", "aug_24_2011.csv", ["Apple"]),
+    ("2010-01-20", "2010-02-03", "jan_27_2010.csv", ["Apple"]),
+    ("2014-08-24", "2014-09-07", "aug_31_2014.csv", ["Apple"]),
+    ("2010-02-26", "2010-03-12", "mar_5_2010.csv", ["Apple"]),
+    ("2011-07-27", "2011-08-11", "aug_3_2011.csv", ["Apple"]),
+    ("2014-05-05", "2014-05-19", "may_12_2014.csv", ["Apple"]),
 ]
 
 async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
@@ -94,10 +94,10 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
             for tweet in tweets:
                 tweet_text = tweet.text.lower()  # Convert to lowercase for easier comparison
 
-                # Define words to exclude tweets related to fruit, juice, etc.
+                # Define words to exclude tweets related to fruit, juice, and other possible spam
                 exclude_words = ["fruit", "juice", "tree", "pie", "cider", "orchard", "win", "free", "cinnamon", "caramel", "eat", "eating", "meal", "recipe", "dessert", "picking", "giveaway", "jack", "taste", "wood", "shabby", "slice", "bees", "banana", "ate", "cake", "viral", "sour", "flavor"]
 
-                # Only save tweets about the company, excluding tweets about fruit
+                # Only save tweets about the company, excluding tweets with queries included above
                 if "apple" in tweet_text and not any(exclude in tweet_text for exclude in exclude_words):
                     tweet_count += 1
                     tweet_data = [
