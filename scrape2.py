@@ -21,16 +21,15 @@ logging.basicConfig(
 
 # Set minimum value of tweets you want to get per query
 MINIMUM_TWEETS = 500  # Adjust based on your goal of 20k-30k total tweets
-MINIMUM_LIKES = 10  # Set minimum likes for filtering tweets
 
-# List of dates with 7-day range before and after
-DATES = [
-    ("2011-08-28", "2011-08-30", "aug_24_2011.csv", ["Apple"]),
-    ("2010-01-31", "2010-02-02", "jan_27_2010.csv", ["Apple"]),
-    ("2014-09-01", "2014-09-03", "aug_31_2014.csv", ["Apple"]),
-    ("2010-03-07", "2010-03-09", "mar_5_2010.csv", ["Apple"]),
-    ("2011-08-07", "2011-08-09", "aug_3_2011.csv", ["Apple"]),
-    ("2014-05-15", "2014-05-17", "may_12_2014.csv", ["Apple"]),
+# List of queries and filenames for each search
+QUERIES: List[Tuple[str, str]] = [
+    ("min_faves:10 'Apple' lang:en until:2011-08-30 since:2011-08-28", "aug_24_2011.csv"),
+    ("min_faves:10 'Apple' lang:en until:2010-02-02 since:2010-01-31", "jan_27_2010.csv"),
+    ("min_faves:10 'Apple' lang:en until:2014-09-03 since:2014-09-01", "aug_31_2014.csv"),
+    ("min_faves:10 'Apple' lang:en until:2010-03-09 since:2010-03-07", "mar_5_2010.csv"),
+    ("min_faves:10 'Apple' lang:en until:2011-08-09 since:2011-08-07", "aug_3_2011.csv"),
+    ("min_faves:10 'Apple' lang:en until:2014-05-17 since:2014-05-15", "may_12_2014.csv"),
 ]
 
 async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
@@ -46,7 +45,7 @@ async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> ob
         tweets = await tweets.next()
     return tweets
 
-async def scrape_tweets(query: str, filename: str, start_date: str, end_date: str) -> None:
+async def scrape_tweets(query: str, filename: str) -> None:
     client = Client(language="en-US")
     await client.login(
         auth_info_1=TWITTER_USERNAME,
@@ -70,12 +69,13 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
     with full_path.open("a", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
         if tweet_count == 0:
-            writer.writerow(["Tweet_Count", "Query", "Text", "Created_At", "Likes"])
+            writer.writerow(
+                ["Tweet_Count", "Username", "Text", "Created_At", "Retweets", "Likes"]
+            )
 
         while tweet_count < MINIMUM_TWEETS:
             try:
-                query_with_date = f"{query} lang:en since:{start_date} until:{end_date}"
-                tweets = await get_tweets(client, query_with_date, tweets)
+                tweets = await get_tweets(client, query, tweets)
             except TooManyRequests as e:
                 rate_limit_reset = datetime.fromtimestamp(e.rate_limit_reset)
                 logging.warning(f"Rate limit reached. Waiting until {rate_limit_reset}")
@@ -92,21 +92,16 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
                 break
 
             for tweet in tweets:
-                tweet_text = tweet.text.lower()
-
-                # Exclude irrelevant tweets related to fruit, food, etc.
-                exclude_words = ["fruit", "juice", "tree", "pie", "cider", "orchard", "win", "free", "cinnamon", "caramel", "eat", "eating", "meal", "recipe", "dessert", "picking", "giveaway", "jack", "taste", "wood", "shabby", "slice", "bees", "banana", "ate", "cake", "viral", "sour", "flavor"]
-
-                if "apple" in tweet_text and not any(exclude in tweet_text for exclude in exclude_words) and tweet.favorite_count >= MINIMUM_LIKES:
-                    tweet_count += 1
-                    tweet_data = [
-                        tweet_count,
-                        query,
-                        tweet.text,
-                        tweet.created_at,
-                        tweet.like_count  # Add the like count
-                    ]
-                    writer.writerow(tweet_data)
+                tweet_count += 1
+                tweet_data = [
+                    tweet_count,
+                    tweet.user.name,
+                    tweet.text,
+                    tweet.created_at,
+                    tweet.retweet_count,
+                    tweet.favorite_count,
+                ]
+                writer.writerow(tweet_data)
 
             logging.info(f"Got {tweet_count} tweets for query: {query}")
 
@@ -119,9 +114,8 @@ async def scrape_tweets(query: str, filename: str, start_date: str, end_date: st
     await asyncio.sleep(15)
 
 async def main():
-    for start_date, end_date, filename, queries in DATES:
-        for query in queries:
-            await scrape_tweets(query, filename, start_date, end_date)
+    for query, filename in QUERIES:
+        await scrape_tweets(query, filename)
 
 if __name__ == "__main__":
     asyncio.run(main())
