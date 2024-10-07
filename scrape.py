@@ -24,10 +24,13 @@ MINIMUM_TWEETS = 500
 
 # List of dates with 7-day range before and after
 DATES = [
-    ("2010-02-25", "2010-02-27", "feb_26_2010.csv", ["Apple"]),
-    ("2014-08-23", "2014-08-25", "aug_24_2014.csv", ["Apple"]),
+    ("2011-08-17", "2011-08-31", "aug_24_2011.csv", ["Apple"]),
+    ("2010-01-20", "2010-02-03", "jan_27_2010.csv", ["Apple"]),
+    ("2014-08-24", "2014-09-07", "aug_31_2014.csv", ["Apple"]),
+    ("2010-02-26", "2010-03-12", "mar_5_2010.csv", ["Apple"]),
+    ("2011-07-27", "2011-08-11", "aug_3_2011.csv", ["Apple"]),
+    ("2014-05-05", "2014-05-19", "may_12_2014.csv", ["Apple"]),
 ]
-
 async def get_tweets(client: Client, query: str, tweets: Optional[object]) -> object:
     if tweets is None:
         logging.info(f"Getting tweets for query: {query}")
