@@ -10,6 +10,6 @@ RESUME_FILE = ROOT_DIR / "resume_state.json"
 RAW_DIR.mkdir(exist_ok=True)
 
 # Twitter credentials
-TWITTER_USERNAME = "Hojung1030366"
-TWITTER_EMAIL = "hojunglee@op.pl"
-TWITTER_PASSWORD = "haslonatwitter3"
+TWITTER_USERNAME = "Gabrysia919973"
+TWITTER_EMAIL = "gabrielakrzyk@op.pl"
+TWITTER_PASSWORD = "haslonatwitter4"
