@@ -21,7 +21,7 @@ logging.basicConfig(
 
 # Set minimum value of tweets you want to get per query
 MINIMUM_TWEETS = 500  # Adjust based on your goal of 20k-30k total tweets
-MINIMUM_LIKES = 20  # Set minimum likes for filtering tweets
+MINIMUM_LIKES = 10  # Set minimum likes for filtering tweets
 
 # List of dates with 7-day range before and after
 DATES = [
