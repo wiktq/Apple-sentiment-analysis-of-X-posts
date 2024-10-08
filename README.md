@@ -25,7 +25,7 @@ pip install -r requirements.txt
 python scrape.py
 ```
 *5. Blocking - 
-I would suggest to lower the data volumes in the code to minimize the probability of twitter's ban. If decreasing the volume is not possible, add a new twitter account data to the "credentials.py" after every block.
+I would suggest to lower the data volume in the code to minimize the probability of twitter's ban. If decreasing the volume is not possible, add a new twitter account data to the "credentials.py" after every block.
 
 *6. Deleting the repository from Mac, if needed
 ```bash
