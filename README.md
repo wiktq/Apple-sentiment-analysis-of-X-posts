@@ -34,3 +34,9 @@ rm -rf Apple-sentiment-analysis
 *7. Fetching the latest changes from GitHub
 ```bash
 git pull origin main
+```
+8. Merging the output csv files, if they were downloaded differently
+```bash
+python csvmerge.py
+```
+
