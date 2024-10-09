@@ -1,42 +1,46 @@
+import os
 import pandas as pd
 from collections import Counter
-import re
 import nltk
 from nltk.corpus import stopwords
+import string
 
-# If you don't have stopwords downloaded, uncomment this line and run it once
+# Download NLTK stopwords
 nltk.download('stopwords')
 
-# Load CSV
-csv_file = "/Users/wiktoria/Documents/master/Master thesis/All tweets/tweets_merged.csv"  # Replace with your file path
+# Define the CSV file or directory path
+csv_file = '/Users/wiktoria/Documents/master/Master thesis/All tweets/tweets_merged.csv'  # Change to your file path
+
+# Load the CSV file
 df = pd.read_csv(csv_file)
 
-# Define stopwords
-stop_words = set(stopwords.words('english'))
+# Get the tweet text column
+tweets = df['Text']  # Assuming your CSV has a 'Text' column with tweets
 
-# Function to clean and tokenize tweets
-def clean_tokenize_tweets(text):
-    # Remove special characters and numbers
-    text = re.sub(r'[^A-Za-z\s]', '', text)
-    # Tokenize and lowercase
-    words = text.lower().split()
-    # Remove stopwords
-    words = [word for word in words if word not in stop_words]
-    return words
+# Combine all tweets into one text
+all_text = ' '.join(tweets)
 
-# Combine all tweets into one long text
-all_tweets = " ".join(df['Text'].astype(str))
+# Remove punctuation and convert to lowercase
+translator = str.maketrans('', '', string.punctuation)
+all_text = all_text.translate(translator).lower()
 
-# Clean and tokenize
-tokens = clean_tokenize_tweets(all_tweets)
+# Split text into words
+words = all_text.split()
 
-# Count word frequencies
-word_freq = Counter(tokens)
+# Remove stopwords
+filtered_words = [word for word in words if word not in stopwords.words('english')]
 
-# Display the most common words
-most_common_words = word_freq.most_common(50)  # Top 50 words
-print(most_common_words)
+# Calculate word frequencies
+word_freq = Counter(filtered_words)
 
-# Save frequency to CSV for easy review
-freq_df = pd.DataFrame(most_common_words, columns=['Word', 'Frequency'])
-freq_df.to_csv("word_frequencies.csv", index=False)
+# Convert the word frequency dictionary to a DataFrame
+word_freq_df = pd.DataFrame(word_freq.items(), columns=['Word', 'Frequency'])
+
+# Sort by frequency
+word_freq_df = word_freq_df.sort_values(by='Frequency', ascending=False)
+
+# Save to CSV
+output_file = '/Users/wiktoria/Documents/master/Master thesis/All tweets'  # Change to your output file path
+word_freq_df.to_csv(output_file, index=False)
+
+print(f"Word frequency analysis saved to {output_file}")
