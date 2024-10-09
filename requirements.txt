@@ -4,4 +4,4 @@ beautifulsoup4
 requests
 lxml
 schedule
-
+nltk
