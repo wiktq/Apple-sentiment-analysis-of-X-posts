@@ -19,10 +19,10 @@ for idx, file in enumerate(csv_files):
     
     if idx == 0:
         # For the first file, include the header
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(file_path, encoding='ISO-8859-1')
     else:
         # For subsequent files, skip the header
-        df = pd.read_csv(file_path, header=0)
+        df = pd.read_csv(file_path, header=0, encoding='ISO-8859-1')
     
     dfs.append(df)
 
