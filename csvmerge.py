@@ -1,12 +1,11 @@
 import os
 import pandas as pd
 
-# Define the directory where your CSV files are located
-directory = "/Users/wiktoria/Documents/master/Master thesis/May 12, 2014"  # Replace with your actual path
+# Defining the directory where the CSV files are located
+directory = "/path/to/your/csv/folder"  # Replacing with the actual path
 
 # Define the output file path
-output_file = "May_12_2014_merged.csv"  # You can change the output filename if needed
-
+output_file = "XXXX_merged.csv"  # Changing the output file name, if needed
 # Get the list of CSV files in the directory
 csv_files = sorted([file for file in os.listdir(directory) if file.endswith(".csv")])
 
@@ -18,7 +17,7 @@ for idx, file in enumerate(csv_files):
     file_path = os.path.join(directory, file)
     
     if idx == 0:
-        # For the first file, include the header
+        # For the first file, include the header (additonally, specifying an encoding that handles a winder range of characters)
         df = pd.read_csv(file_path, encoding='ISO-8859-1')
     else:
         # For subsequent files, skip the header
