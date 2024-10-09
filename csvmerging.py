@@ -10,7 +10,7 @@ occurrences = {
 }
 
 # Directory where your CSV files are located
-directory = "/Users/wiktoria/Documents/master/Master\ thesis/August\ 24\,\ 2011\ -\ Steve\ Jobs\ resignation\ copy "
+directory = "/Users/wiktoria/Documents/master/Master thesis/August 24, 2011 - Steve Jobs resignation copy"
 
 # Function to merge CSVs for each occurrence
 def merge_csvs(files, output_file):
