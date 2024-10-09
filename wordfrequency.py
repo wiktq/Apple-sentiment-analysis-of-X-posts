@@ -40,7 +40,7 @@ word_freq_df = pd.DataFrame(word_freq.items(), columns=['Word', 'Frequency'])
 word_freq_df = word_freq_df.sort_values(by='Frequency', ascending=False)
 
 # Save to CSV
-output_file = '/Users/wiktoria/Documents/master/Master thesis/All tweets'  # Change to your output file path
+output_file = '/Users/wiktoria/Documents/master/Master thesis/All tweets/wordfrequency.csv'  # Change to your output file path
 word_freq_df.to_csv(output_file, index=False)
 
 print(f"Word frequency analysis saved to {output_file}")
