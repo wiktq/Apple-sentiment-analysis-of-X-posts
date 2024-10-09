@@ -35,7 +35,7 @@ rm -rf Apple-sentiment-analysis
 ```bash
 git pull origin main
 ```
-8. Merging the output csv files, if they were downloaded differently
+8. Merging the output csv files, if they were downloaded separately
 ```bash
 python csvmerge.py
 ```
