@@ -2,10 +2,10 @@ import os
 import pandas as pd
 
 # Define the directory where your CSV files are located
-directory = "/Users/wiktoria/Documents/master/Master thesis/August 3, 2011"  # Replace with your actual path
+directory = "/Users/wiktoria/Documents/master/Master thesis/May 12, 2014"  # Replace with your actual path
 
 # Define the output file path
-output_file = "August_3_2011_merged.csv"  # You can change the output filename if needed
+output_file = "May_12_2014_merged.csv"  # You can change the output filename if needed
 
 # Get the list of CSV files in the directory
 csv_files = sorted([file for file in os.listdir(directory) if file.endswith(".csv")])
