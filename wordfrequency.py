@@ -8,7 +8,7 @@ from nltk.corpus import stopwords
 nltk.download('stopwords')
 
 # Load CSV
-csv_file = "/Users/wiktoria/Documents/master/Master thesis/All tweets"  # Replace with your file path
+csv_file = "/Users/wiktoria/Documents/master/Master thesis/All tweets/tweets_merged.csv"  # Replace with your file path
 df = pd.read_csv(csv_file)
 
 # Define stopwords
