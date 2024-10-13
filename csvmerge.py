@@ -5,7 +5,7 @@ import pandas as pd
 directory = "/Users/wiktoria/Documents/master/Master thesis/merged"  # Replacing with the actual path
 
 # Define the output file path
-output_file = "tweets_merged_links+apple+query+nick+dup+ASCII"  # Changing the output file name, if needed
+output_file = "tweets_merged_links+apple+query+nick+dup+ASCII.csv"  # Changing the output file name, if needed
 # Get the list of CSV files in the directory
 csv_files = sorted([file for file in os.listdir(directory) if file.endswith(".csv")])
 
