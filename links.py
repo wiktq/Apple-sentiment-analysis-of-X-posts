@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 # Load your CSV file into a DataFrame
-csv_file = "/Users/wiktoria/Documents/master/Master thesis/May 12, 2014/May_12_2014_merged.csv"  # Replace with your file path
+csv_file = "/Users/wiktoria/Documents/master/Master thesis/All tweets/tweets_merged.csv"  # Replace with your file path
 df = pd.read_csv(csv_file)
 
 # Function to remove URLs
