@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the CSV file into a DataFrame
-df = pd.read_csv("/Users/wiktoria/Documents/master/Master thesis/All tweets/tweets_merged_links+apple+query+nick.csv")
+df = pd.read_csv("/path/to/directory/")
 
 # Drop duplicate tweets (keep the first occurrence)
 df_cleaned = df.drop_duplicates(subset=['Text'], keep='first')
