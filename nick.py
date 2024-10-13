@@ -21,6 +21,6 @@ def filter_apple_in_username_only(row):
 filtered_df = df[df.apply(filter_apple_in_username_only, axis=1)]
 
 # Save the filtered tweets to a new CSV
-filtered_df.to_csv("/path/to/filtered_tweets.csv", index=False)
+filtered_df.to_csv("filtered_tweets.csv", index=False)
 
 print(f"Filtered tweets saved to '/path/to/filtered_tweets.csv'")
