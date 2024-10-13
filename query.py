@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Define the file path
-csv_file = "/Users/wiktoria/Documents/master/Master thesis/August 24, 2011 - Steve Jobs resignation/August_24_2011_merged_links+apple.csv"  # Replace with your file path
+csv_file = "/Users/wiktoria/Documents/master/Master thesis/January 27, 2010 - iPad announcement/January_27_2010_merged_links+apple.csv"  # Replace with your file path
 
 # Load your CSV file into a DataFrame
 df = pd.read_csv(csv_file)
