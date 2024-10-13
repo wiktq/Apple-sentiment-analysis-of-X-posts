@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load your CSV file into a DataFrame
-csv_file = "/Users/wiktoria/Documents/master/Master thesis/August 31, 2014 - iCloud leak/August_24_2014_merged_links.csv"  # Replace with your file path
+csv_file = "/Users/wiktoria/Documents/master/Master thesis/March 5, 2010/March_5_2010_merged_links.csv"  # Replace with your file path
 df = pd.read_csv(csv_file)
 
 # Filter rows where 'apple' is present in the tweet (case-insensitive)
