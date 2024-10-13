@@ -12,6 +12,6 @@ def remove_non_ascii(text):
 df['Text'] = df['Text'].apply(remove_non_ascii)
 
 # Save the cleaned tweets to a new CSV
-df.to_csv('/path/to/cleaned_tweets.csv', index=False)
+df.to_csv('cleaned_tweets.csv', index=False)
 
 print("Non-ASCII characters removed successfully.")
