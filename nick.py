@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load your CSV
-csv_file = "/Users/wiktoria/Documents/master/Master thesis/May 12, 2014/May_12_2014_merged_links+apple+query.csv"  # Change to your actual path
+csv_file = "/Users/wiktoria/Documents/master/Master thesis/All tweets/tweets_merged_links+apple+query.csv"  # Change to your actual path
 df = pd.read_csv(csv_file)
 
 # Function to check if 'apple' is only in the username
