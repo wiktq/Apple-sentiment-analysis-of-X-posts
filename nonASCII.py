@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 # Load your tweets CSV
-df = pd.read_csv('/Users/wiktoria/Documents/master/Master thesis/August 3, 2011/August_3_2011_merged_links+apple+query+nick+dup.csv')
+df = pd.read_csv('/Users/wiktoria/Documents/master/Master thesis/May 12, 2014/May_12_2014_merged_links+apple+query+nick+dup.csv')
 
 # Function to remove non-ASCII characters
 def remove_non_ascii(text):
