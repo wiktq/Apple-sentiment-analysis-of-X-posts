@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load your CSV file with tweets
-df = pd.read_csv('/Users/wiktoria/Documents/master/Master thesis/August 31, 2014 - iCloud leak/August_24_2014_merged_links+apple+query+nick+dup+ASCII.csv')
+df = pd.read_csv('/Users/wiktoria/Documents/master/Master thesis/March 5, 2010/March_5_2010_merged_links+apple+query+nick+dup+ASCII.csv')
 
 # Convert the 'Text' column (or your equivalent tweet text column) to lowercase
 df['Text'] = df['Text'].str.lower()
