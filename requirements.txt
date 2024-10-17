@@ -5,3 +5,4 @@ requests
 lxml
 schedule
 nltk
+vaderSentiment
