@@ -2,7 +2,7 @@ import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # Load the CSV file with tweets
-csv_file = "/Users/wiktoria/Documents/master/Master thesis/January 27, 2010 - iPad announcement/January_27_2010_merged_links+apple+query+nick+dup+ASCII+lowercase+stopwords.csv"
+csv_file = "/Users/wiktoria/Documents/master/Master thesis/August 31, 2014 - iCloud leak/August_24_2014_merged_links+apple+query+nick+dup+ASCII+lowercase+stopwords.csv"
 df = pd.read_csv(csv_file)
 
 # Initialize the VADER sentiment analyzer
