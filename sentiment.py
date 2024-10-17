@@ -13,7 +13,7 @@ def analyze_sentiment(tweet):
     return analyzer.polarity_scores(tweet)
 
 # Apply the sentiment analysis to each tweet and store the results in new columns
-df['Sentiment'] = df['Tweet'].apply(lambda tweet: analyze_sentiment(tweet))
+df['Sentiment'] = df['Text'].apply(lambda tweet: analyze_sentiment(tweet))
 df['Positive'] = df['Sentiment'].apply(lambda score: score['pos'])
 df['Negative'] = df['Sentiment'].apply(lambda score: score['neg'])
 df['Neutral'] = df['Sentiment'].apply(lambda score: score['neu'])
