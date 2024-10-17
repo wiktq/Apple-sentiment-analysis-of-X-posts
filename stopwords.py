@@ -22,6 +22,6 @@ def remove_stop_words(text):
 df['Text'] = df['Text'].apply(remove_stop_words)
 
 # Save the updated DataFrame to a new CSV file
-df.to_csv('/path/to/your/tweets_no_stopwords.csv', index=False)
+df.to_csv('stopwords_removed.csv', index=False)
 
 print("Stop words removed and saved to a new CSV file.")
