@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 # Defining the directory where the CSV files are located
-directory = "/path/to/your/folder/"  # Replacing with the actual path
+directory = '/Users/wiktoria/Documents/master/Master thesis/untitled folder'  # Replacing with the actual path
 
 # Define the output file path
 output_file = "tweets_merged.csv"  # Changing the output file name, if needed
