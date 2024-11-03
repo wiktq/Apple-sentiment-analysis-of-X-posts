@@ -20,7 +20,7 @@ def get_wordnet_pos(word):
     return tag_dict.get(tag, wordnet.NOUN)
 
 # Load the dataset
-file_path = '/Users/wiktoria/Documents/master/Master thesis/May 12, 2014/May_12_2014_merged_links+apple+query+nick+dup+ASCII+lowercase+stopwords.csv'  # Replace with your actual path
+file_path = 'path/to/your/folder'  # Replace with your actual path
 df = pd.read_csv(file_path)
 
 # Function for lemmatizing each word in a tweet
