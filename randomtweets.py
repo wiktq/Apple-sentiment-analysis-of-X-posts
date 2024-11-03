@@ -13,4 +13,4 @@ sampled_df = df.sample(n=sample_size, random_state=42)  # `random_state` for rep
 # Save the sample to a new CSV file
 sampled_df.to_csv('random 1000 tweets.csv', index=False)
 
-print(f"Random sample of {sample_size} tweets saved to {output_path}")
+print(f"Random sample of {sample_size} tweets saved as csv file")
