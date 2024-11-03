@@ -33,6 +33,8 @@ def lemmatize_text(text):
 def clean_and_lemmatize_text(text):
     # Remove mentions except @Apple
     text = re.sub(r'@\b(?!Apple\b)\w+', '', text)
+    # Remove "#" symbols only, keeping the rest of the text
+    text = text.replace("#", "")
     # Apply lemmatization
     return lemmatize_text(text)
 
@@ -42,4 +44,4 @@ df['Cleaned_Text'] = df['Text'].apply(clean_and_lemmatize_text)
 # Save the updated DataFrame to a new CSV file
 df.to_csv('lemmatization.csv', index=False)
 
-print("Lemmatization done and results  saved to a new CSV file.")
+print("Lemmatization done and results saved to a new CSV file.")
