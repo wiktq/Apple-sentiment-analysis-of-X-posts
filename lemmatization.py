@@ -37,7 +37,7 @@ def clean_and_lemmatize_text(text):
     return lemmatize_text(text)
 
 # Apply lemmatization to each tweet
-df['Cleaned_Text'] = df['Tweet'].apply(clean_and_lemmatize_text)
+df['Cleaned_Text'] = df['Text'].apply(clean_and_lemmatize_text)
 
 # Save the cleaned DataFrame to a new CSV
 output_file = '/path/to/your/lemmatized_tweets.csv'  # Replace with your desired output path
