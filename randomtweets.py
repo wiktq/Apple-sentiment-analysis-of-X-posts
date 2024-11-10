@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load your Excel dataset
-file_path = '/Users/wiktoria/Desktop/Book1.xlsx'  # Replace with your actual file path
+file_path = ''  # Replace with your actual file path
 df = pd.read_excel(file_path)  # Use read_excel() for Excel files
 
 # Set the number of random samples you want
