@@ -1,4 +1,4 @@
-# Apple-sentiment-analysis
+# Apple - sentiment analysis of X posts
 Scrapping tweets and making sentiment analysis to see if Apple's market price has any dependencies over the tweets' sentiment.
 
 Content
