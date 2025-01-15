@@ -78,12 +78,14 @@ python apple.py
 ```
 
 Sentiment
+
 You can check the sentiment of fetched posts using the VADER model. In the script used in this repository, the outcome of the sentiment will be in a form of a compound (numeric value ranging from -1 to 1). The sentiment is provided for every tweet. 
 ```bash
 python sentiment.py
 ```
 
 Accuracy of model 
+
 To assess the model's accuracy, use the additional script provided. Since the total number of tweets could reach tens of thousands, manually labeling each one is not feasible. Instead, use the randomtweets.py script to select a random sample for calculating the F1 score. 
 However, if possible, calculate the F1 score for the entire dataset rather than just the sample.
 ```bash
