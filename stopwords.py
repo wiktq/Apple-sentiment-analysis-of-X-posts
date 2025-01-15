@@ -6,7 +6,7 @@ from nltk.corpus import stopwords
 nltk.download('stopwords')
 
 # Load your CSV file
-csv_file = '/Users/wiktoria/Documents/master/Master thesis/May 12, 2014/May_12_2014_merged_links+apple+query+nick+dup+ASCII+lowercase.csv'  # Change to your actual file path
+csv_file = 'path/to/your/directory'  # Change to your actual file path
 df = pd.read_csv(csv_file)
 
 # Define stop words
