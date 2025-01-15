@@ -1,6 +1,6 @@
 # Apple - sentiment analysis of X posts using VADER
 
-##Content
+## Content
 1) Scrapping tweets for multiple archival dates (steps with asterisks are optional if the code fails).
 2) Data cleaning (including non ASCII characters removal, lemmatization, and more).
 3) Sentiment analysis using VADER
