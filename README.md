@@ -3,6 +3,8 @@
 Content
 1) Scrapping tweets for multiple archival dates (steps with asterisks are optional if the code fails).
 2) Data cleaning (including non ASCII characters removal, lemmatization, and more).
+3) Sentiment analysis using VADER
+4) Random sample retrival for calcculating F! score (or any other model's accuracy measure).
 
 IMPORTANT - Always ensure that you use the correct file directory in the scripts.
 
